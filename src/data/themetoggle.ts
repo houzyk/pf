@@ -1,7 +1,9 @@
 import { ThemeTogglePropsInterface } from "../components";
 
 const themeToggleData: ThemeTogglePropsInterface = {
-  buttonText: ""
+  accessibility:{
+    buttonAriaLabel: ""
+  }
 }
 
 export default themeToggleData;
