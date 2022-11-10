@@ -1,17 +1,20 @@
-export interface ThemeInterface {
+interface ThemeInterface {
   text: string;
   outline: string;
   background: string;
 }
 
-export const lightTheme: ThemeInterface = {
+const lightTheme: ThemeInterface = {
   text: "#000000",
   outline: "#000000",
   background: "#FFFFFF"
 }
 
-export const darkTheme: ThemeInterface = {
+const darkTheme: ThemeInterface = {
   text: "#FFFFFF",
   outline: "#FFFFFF",
   background: "#000000"
 }
+
+export type { ThemeInterface };
+export { lightTheme, darkTheme };
