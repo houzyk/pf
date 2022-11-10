@@ -22,7 +22,8 @@ const App = () => {
     <ThemeProvider theme={isLightGlobalTheme ? lightTheme : darkTheme}>
       <GlobalStyles/>
       <ThemeToggle 
-        onClickcallback={() => setIsLightGlobalTheme(!isLightGlobalTheme)}
+        onClickCallback={() => setIsLightGlobalTheme(!isLightGlobalTheme)}
+        isLightGlobalTheme={isLightGlobalTheme}
         {...ThemeToggleData}
       />
       <Nav {...NavData}/>

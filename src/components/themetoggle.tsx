@@ -1,25 +1,51 @@
 import styled from "styled-components";
+import { ThemeInterface } from "../themes";
 
 interface ThemeTogglePropsInterface {
-  onClickcallback?: any;
-  buttonText: string;
+  isLightGlobalTheme?: boolean;
+  onClickCallback?: any;
+  accessibility?: {
+    buttonAriaLabel?: string;
+  }
 }
 
 const ThemeToggle: React.FunctionComponent<ThemeTogglePropsInterface> = ({
-  onClickcallback,
-  buttonText
+  onClickCallback,
+  isLightGlobalTheme,
+  accessibility
 }) => {
   return (
-    <ButtonStyleWrapper 
-      onClick={onClickcallback}
-    >
-      {buttonText || ''}
-    </ButtonStyleWrapper>
+    <ThemeToggleStyleWrapper className="themetoggle">
+      <button
+        className={["themetoggle-button", isLightGlobalTheme ? '' : 'themetoggle-button_toggled'].join(' ')}
+        onClick={onClickCallback}
+        aria-label={accessibility?.buttonAriaLabel || ''}
+      />
+    </ThemeToggleStyleWrapper>
   );
 }
 
-const ButtonStyleWrapper = styled.button`
-  
+const ThemeToggleStyleWrapper = styled.div<{ theme: ThemeInterface }>`
+  &.themetoggle {
+    background-color: ${({ theme }) => theme.outline};
+    height: 23px;
+    width: 46px;
+    border-radius: 23px;
+
+    .themetoggle-button {
+      background-color: ${({ theme }) => theme.background};
+      height: 23px;
+      width: 23px;
+      border-radius: 50%;
+      border: none;
+      transition: transform 0.5s;
+      cursor: pointer;
+
+      &.themetoggle-button_toggled {
+        transform: translateX(23px);
+      }
+    }
+  }
 `
 
 export type { ThemeTogglePropsInterface };
