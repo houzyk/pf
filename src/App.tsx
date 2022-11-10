@@ -27,6 +27,8 @@ const App = () => {
         {...ThemeToggleData}
       />
       <Nav {...NavData}/>
+      <main className="container-bs">
+      </main>
       <Footer {...FooterData}/>
     </ThemeProvider>
   );

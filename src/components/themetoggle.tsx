@@ -17,7 +17,7 @@ const ThemeToggle: React.FunctionComponent<ThemeTogglePropsInterface> = ({
   return (
     <ThemeToggleStyleWrapper className="themetoggle">
       <button
-        className={["themetoggle-button", isLightGlobalTheme ? '' : 'themetoggle-button_toggled'].join(' ')}
+        className={["themetoggle-button", isLightGlobalTheme ? '' : 'themetoggle-button_toggled-js'].join(' ')}
         onClick={onClickCallback}
         aria-label={accessibility?.buttonAriaLabel || ''}
       />
@@ -41,7 +41,7 @@ const ThemeToggleStyleWrapper = styled.div<{ theme: ThemeInterface }>`
       transition: transform 0.5s;
       cursor: pointer;
 
-      &.themetoggle-button_toggled {
+      &.themetoggle-button_toggled-js {
         transform: translateX(23px);
       }
     }
