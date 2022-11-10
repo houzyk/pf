@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 interface FooterPropsInterface {
 
 }
@@ -6,10 +8,14 @@ const Footer: React.FunctionComponent<FooterPropsInterface> = ({
   
 }) => {
   return (
-    <footer>
-    </footer>
+    <FooterStyleWrapper>
+    </FooterStyleWrapper>
   );
 }
+
+const FooterStyleWrapper = styled.footer`
+  
+`
 
 export type { FooterPropsInterface };
 export default Footer;
