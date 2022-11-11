@@ -8,6 +8,10 @@ import {
   Footer
 } from "./components";
 
+import { 
+  SectionHOC
+} from "./components/hoc";
+
 import { FooterData, 
   NavData, 
   ThemeToggleData 
@@ -47,7 +51,7 @@ const App = () => {
               onClickCallback: () => setIsLightGlobalTheme(!isLightGlobalTheme)
             }}
           />
-          <main className="container-bs">
+          <main>
           </main>
           <Footer {...FooterData}/>
         </IsMobileContext.Provider>

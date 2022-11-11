@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ThemeInterface } from "../themes";
-import ThemeToggle, { ThemeTogglePropsInterface } from "./themetoggle";
+import { ThemeToggle, ThemeTogglePropsInterface } from ".";
 import { IsMobileContext } from "../App";
 
 interface NavPropsInterface {
@@ -32,7 +32,7 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
     if (navTitleRef?.current) {
       const navTitleLength = navTitleRef.current?.offsetWidth;
       const pageLength = document?.body?.offsetHeight - window.innerHeight;
-      const navTitleToPageRatio =  pageLength / navTitleLength;
+      const navTitleToPageRatio = pageLength / navTitleLength;
       const scrollValueRatio = window.scrollY / navTitleToPageRatio;
       const progressBarValue = scrollValueRatio / navTitleLength;
       setProgressBarLength(progressBarValue * 100);
@@ -73,7 +73,7 @@ const NavStyleWrapper = styled.nav<{ theme:ThemeInterface, progressBarLength: nu
     border-bottom: 15px solid ${({ theme }) => theme.outline};
     height: 58px;
     width: 100vw;
-    position: fixed;
+    position: sticky;
 
     .nav-container {
       height: 100%;
