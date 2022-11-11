@@ -40,6 +40,11 @@ const GlobalStyles = createGlobalStyle<{theme: ThemeInterface}>`
       max-width: 1320px;
     }
   }
+
+  .container-bs-content {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 `
 
 export { GlobalStyles };
