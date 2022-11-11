@@ -1,8 +1,9 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { ThemeInterface } from "../themes";
+import { GlobalThemeContext } from "../App";
 
 interface ThemeTogglePropsInterface {
-  isLightGlobalTheme?: boolean;
   onClickCallback?: any;
   accessibility?: {
     buttonAriaLabel?: string;
@@ -11,9 +12,11 @@ interface ThemeTogglePropsInterface {
 
 const ThemeToggle: React.FunctionComponent<ThemeTogglePropsInterface> = ({
   onClickCallback,
-  isLightGlobalTheme,
   accessibility
 }) => {
+
+  const isLightGlobalTheme = useContext(GlobalThemeContext);
+
   return (
     <ThemeToggleStyleWrapper className="themetoggle">
       <button
