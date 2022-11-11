@@ -68,7 +68,7 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
   );
 }
 
-const NavStyleWrapper = styled.nav<{ theme:ThemeInterface }>`
+const NavStyleWrapper = styled.nav<{ theme:ThemeInterface, progressBarLength: number }>`
   &.nav {
     border-bottom: 15px solid ${({ theme }) => theme.outline};
     height: 58px;
@@ -83,6 +83,19 @@ const NavStyleWrapper = styled.nav<{ theme:ThemeInterface }>`
 
       .nav-container_title {
         transition: color 1s;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+
+        &::before {
+          content:'';
+          height: 5px;
+          width: ${({ progressBarLength }) => progressBarLength}%;
+          background-color: ${({ theme }) => theme.progressBar};
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+        }
       }
     }
   }
