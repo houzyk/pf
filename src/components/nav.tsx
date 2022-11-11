@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ThemeInterface } from "../themes";
 import ThemeToggle, { ThemeTogglePropsInterface } from "./themetoggle";
 import { IsMobileContext } from "../App";
+
 interface NavPropsInterface {
   ThemeToggleProps?: ThemeTogglePropsInterface;
   navTitle?: string;
@@ -21,7 +22,10 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
     <NavStyleWrapper className="nav">
       <div className="container-bs">
         <div className="container-bs-content nav-container">
-          <h1 className="nav-container_title">
+          <h1 
+            className="nav-container_title" 
+            tabIndex={0}
+          >
             {isMobile ? navTitleMobile || '' : navTitle || ''}
           </h1>
           <ThemeToggle {...ThemeToggleProps} />

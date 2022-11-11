@@ -18,7 +18,10 @@ const ThemeToggle: React.FunctionComponent<ThemeTogglePropsInterface> = ({
   const isLightGlobalTheme = useContext(GlobalThemeContext);
 
   return (
-    <ThemeToggleStyleWrapper className="themetoggle">
+    <ThemeToggleStyleWrapper 
+      className="themetoggle" 
+      onClick={onClickCallback}
+    >
       <button
         className={["themetoggle-button", isLightGlobalTheme ? '' : 'themetoggle-button_toggled-js'].join(' ')}
         onClick={onClickCallback}
