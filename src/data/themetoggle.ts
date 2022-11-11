@@ -2,7 +2,8 @@ import { ThemeTogglePropsInterface } from "../components";
 
 const themeToggleData: ThemeTogglePropsInterface = {
   accessibility:{
-    buttonAriaLabel: ""
+    buttonAriaLabelDarkMode: "Switch To Light Mode",
+    buttonAriaLabelLightMode: "Switch To Dark Mode"
   }
 }
 

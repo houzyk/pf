@@ -42,7 +42,7 @@ const App = () => {
         <IsMobileContext.Provider value={isMobile}>
           <Nav
             {...NavData}
-            ThemeToggleProps={{
+            themeToggleProps={{
               ...ThemeToggleData,
               onClickCallback: () => setIsLightGlobalTheme(!isLightGlobalTheme)
             }}

@@ -5,13 +5,13 @@ import ThemeToggle, { ThemeTogglePropsInterface } from "./themetoggle";
 import { IsMobileContext } from "../App";
 
 interface NavPropsInterface {
-  ThemeToggleProps?: ThemeTogglePropsInterface;
+  themeToggleProps?: ThemeTogglePropsInterface;
   navTitle?: string;
   navTitleMobile?: string;
 }
 
 const Nav: React.FunctionComponent<NavPropsInterface> = ({
-  ThemeToggleProps,
+  themeToggleProps,
   navTitle,
   navTitleMobile
 }) => {
@@ -21,14 +21,14 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
   const [progressBarLength, setProgressBarLength] = useState<number>(0);
 
   useEffect(() => {
-    window.addEventListener("scroll", WindowScrollListner);
+    window.addEventListener("scroll", WindowScrollListener);
 
     return (() => {
-      window.removeEventListener("scroll", WindowScrollListner);
+      window.removeEventListener("scroll", WindowScrollListener);
     });
   }, [])
 
-  const WindowScrollListner = () => {
+  const WindowScrollListener = () => {
     if (navTitleRef?.current) {
       const navTitleLength = navTitleRef.current?.offsetWidth;
       const pageLength = document?.body?.offsetHeight - window.innerHeight;
@@ -61,7 +61,7 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
           >
             {isMobile ? navTitleMobile || '' : navTitle || ''}
           </h1>
-          <ThemeToggle {...ThemeToggleProps} />
+          <ThemeToggle {...themeToggleProps} />
         </div>
       </div>
     </NavStyleWrapper>

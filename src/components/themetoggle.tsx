@@ -6,7 +6,8 @@ import { GlobalThemeContext } from "../App";
 interface ThemeTogglePropsInterface {
   onClickCallback?: any;
   accessibility?: {
-    buttonAriaLabel?: string;
+    buttonAriaLabelDarkMode?: string;
+    buttonAriaLabelLightMode?: string;
   }
 }
 
@@ -25,7 +26,10 @@ const ThemeToggle: React.FunctionComponent<ThemeTogglePropsInterface> = ({
       <button
         className={["themetoggle-button", isLightGlobalTheme ? '' : 'themetoggle-button_toggled-js'].join(' ')}
         onClick={onClickCallback}
-        aria-label={accessibility?.buttonAriaLabel || ''}
+        aria-label={isLightGlobalTheme ? 
+          accessibility?.buttonAriaLabelLightMode || '' : 
+          accessibility?.buttonAriaLabelDarkMode || ''
+        }
       />
     </ThemeToggleStyleWrapper>
   );
