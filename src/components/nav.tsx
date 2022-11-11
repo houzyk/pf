@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ThemeInterface } from "../themes";
 import ThemeToggle, { ThemeTogglePropsInterface } from "./themetoggle";
@@ -17,14 +17,47 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
 }) => {
 
   const isMobile = useContext(IsMobileContext);
+  const navTitleRef = useRef<HTMLHeadingElement>(null);
+  const [progressBarLength, setProgressBarLength] = useState<number>(0);
+
+  useEffect(() => {
+    window.addEventListener("scroll", WindowScrollListner);
+
+    return (() => {
+      window.removeEventListener("scroll", WindowScrollListner);
+    });
+  }, [])
+
+  const WindowScrollListner = () => {
+    if (navTitleRef?.current) {
+      const navTitleLength = navTitleRef.current?.offsetWidth;
+      const pageLength = document?.body?.offsetHeight - window.innerHeight;
+      const navTitleToPageRatio =  pageLength / navTitleLength;
+      const scrollValueRatio = window.scrollY / navTitleToPageRatio;
+      const progressBarValue = scrollValueRatio / navTitleLength;
+      setProgressBarLength(progressBarValue * 100);
+    }
+  }
+
+  const ScrollToTop = () => {
+    window.scroll({
+      behavior: "smooth",
+      top: 0
+    });
+  }
 
   return (
-    <NavStyleWrapper className="nav">
+    <NavStyleWrapper 
+      className="nav" 
+      progressBarLength={progressBarLength}
+    >
       <div className="container-bs">
         <div className="container-bs-content nav-container">
           <h1 
             className="nav-container_title" 
+            ref={navTitleRef}
             tabIndex={0}
+            onClick={ScrollToTop}
           >
             {isMobile ? navTitleMobile || '' : navTitle || ''}
           </h1>
