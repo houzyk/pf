@@ -15,8 +15,6 @@ const GlobalStyles = createGlobalStyle<{theme: ThemeInterface}>`
   /* Bootstrap */
   .container-bs {
     width: 100%;
-    padding-right: calc(1.5rem * 0.5);
-    padding-left: calc(0 * 0.5);
     margin-right: auto;
     margin-left: auto;
 
