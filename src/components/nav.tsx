@@ -70,10 +70,10 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
 
 const NavStyleWrapper = styled.nav<{ theme:ThemeInterface, progressBarLength: number }>`
   &.nav {
-    border-bottom: 15px solid ${({ theme }) => theme.outline};
+    border-bottom: 10px solid ${({ theme }) => theme.outline};
     height: 58px;
     width: 100vw;
-    position: sticky;
+    position: fixed;
 
     .nav-container {
       height: 100%;
