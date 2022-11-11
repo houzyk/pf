@@ -1,12 +1,11 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global-styles";
 import { lightTheme, darkTheme } from "./themes";
 
 import { 
   Nav, 
-  Footer, 
-  ThemeToggle 
+  Footer
 } from "./components";
 
 import { FooterData, 
@@ -14,6 +13,7 @@ import { FooterData,
   ThemeToggleData 
 } from "./data";
 
+const GlobalThemeContext = React.createContext<boolean>(true);
 const IsMobileContext = React.createContext<boolean>(true);
 
 const App = () => {
@@ -38,17 +38,23 @@ const App = () => {
   return (
     <ThemeProvider theme={isLightGlobalTheme ? lightTheme : darkTheme}>
       <GlobalStyles/>
-      <ThemeToggle 
-        onClickCallback={() => setIsLightGlobalTheme(!isLightGlobalTheme)}
-        isLightGlobalTheme={isLightGlobalTheme}
-        {...ThemeToggleData}
-      />
-      <Nav {...NavData}/>
-      <main className="container-bs">
-      </main>
-      <Footer {...FooterData}/>
+      <GlobalThemeContext.Provider value={isLightGlobalTheme}>
+        <IsMobileContext.Provider value={isMobile}>
+          <Nav
+            {...NavData}
+            ThemeToggleProps={{
+              ...ThemeToggleData,
+              onClickCallback: () => setIsLightGlobalTheme(!isLightGlobalTheme)
+            }}
+          />
+          <main className="container-bs">
+          </main>
+          <Footer {...FooterData}/>
+        </IsMobileContext.Provider>
+      </GlobalThemeContext.Provider>
     </ThemeProvider>
   );
 }
 
+export { GlobalThemeContext, IsMobileContext };
 export default App;
