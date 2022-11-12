@@ -35,7 +35,9 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
       const navTitleToPageRatio = pageLength / navTitleLength;
       const scrollValueRatio = window.scrollY / navTitleToPageRatio;
       const progressBarValue = scrollValueRatio / navTitleLength;
-      setProgressBarLength(progressBarValue * 100);
+      if (progressBarValue <= 1) {
+        setProgressBarLength(progressBarValue * 100);
+      }
     }
   }
 
@@ -67,7 +69,7 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
         </div>
       </NavStyleWrapper>
       <div style={{
-        height: "58px",
+        height: "68px",
         width: "100vw"
       }}/>
     </>
@@ -80,6 +82,8 @@ const NavStyleWrapper = styled.nav<{ theme:ThemeInterface, progressBarLength: nu
     height: 58px;
     width: 100vw;
     position: fixed;
+    background-color: ${({ theme }) => theme.background};
+    z-index: 1;
 
     .nav-container {
       height: 100%;
