@@ -6,6 +6,8 @@ interface AccordionPropsInterface {
   accordionTitle?: string;
   accordionDescriptionParagraph?: string;
   accordionTechParagraph?: string;
+  accordionButtonText?: string;
+  accordionButtonURL?: string;
   accordionTheme?: string;
 }
 
@@ -13,7 +15,9 @@ const Accordion: React.FunctionComponent<AccordionPropsInterface> = ({
   accordionTitle,
   accordionDescriptionParagraph,
   accordionTechParagraph,
-  accordionTheme
+  accordionTheme,
+  accordionButtonText,
+  accordionButtonURL
 }) => {
 
   const isLightGlobalTheme = useContext(GlobalThemeContext);
@@ -63,14 +67,18 @@ const Accordion: React.FunctionComponent<AccordionPropsInterface> = ({
         >
           {accordionTechParagraph || ''}
         </p>
-        <a 
-          href=""
-          ref={panelAnchorRef}
-          className="accordion-panel_visit" 
-          target="_blank"
-        >
-          GO TO PROJECT
-        </a>
+        {
+          accordionButtonURL && (
+            <a 
+              href={accordionButtonURL || ''}
+              ref={panelAnchorRef}
+              className="accordion-panel_visit" 
+              target="_blank"
+            >
+              {accordionButtonText || ''}
+            </a>
+          )
+        }
       </div>
     </AccordionStyleWrapper>
   );
