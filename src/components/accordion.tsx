@@ -1,6 +1,7 @@
 import { useRef, useState, useContext } from "react";
 import styled from "styled-components";
 import { GlobalThemeContext } from "../App"
+import { ThemeInterface } from "../themes";
 
 interface AccordionPropsInterface {
   accordionTitle?: string;
@@ -87,7 +88,7 @@ const Accordion: React.FunctionComponent<AccordionPropsInterface> = ({
   );
 }
 
-const AccordionStyleWrapper = styled.div<{ isAccordionOpen: boolean, panelTextLegth?: number, theme, accordionTheme: string, isLightGlobalTheme: boolean }>`
+const AccordionStyleWrapper = styled.div<{ isAccordionOpen: boolean, panelTextLegth?: number, theme: ThemeInterface, accordionTheme: string, isLightGlobalTheme: boolean }>`
   &.accordion {
     border: 3px solid ${({ isAccordionOpen, accordionTheme, isLightGlobalTheme, theme }) => isAccordionOpen && isLightGlobalTheme ? accordionTheme : theme.outline};
     margin-bottom: 10px;
