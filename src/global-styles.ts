@@ -42,6 +42,11 @@ const GlobalStyles = createGlobalStyle<{theme: ThemeInterface}>`
   .container-bs-content {
     margin-left: 10px;
     margin-right: 10px;
+
+    @media (min-width: 992px) {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
   }
 `
 
