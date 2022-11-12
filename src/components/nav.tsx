@@ -47,24 +47,30 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
   }
 
   return (
-    <NavStyleWrapper 
-      className="nav" 
-      progressBarLength={progressBarLength}
-    >
-      <div className="container-bs">
-        <div className="container-bs-content nav-container">
-          <h1 
-            className="nav-container_title" 
-            ref={navTitleRef}
-            tabIndex={0}
-            onClick={ScrollToTop}
-          >
-            {isMobile ? navTitleMobile || '' : navTitle || ''}
-          </h1>
-          <ThemeToggle {...themeToggleProps} />
+    <>
+      <NavStyleWrapper 
+        className="nav" 
+        progressBarLength={progressBarLength}
+      >
+        <div className="container-bs">
+          <div className="container-bs-content nav-container">
+            <h1 
+              className="nav-container_title" 
+              ref={navTitleRef}
+              tabIndex={0}
+              onClick={ScrollToTop}
+            >
+              {isMobile ? navTitleMobile || '' : navTitle || ''}
+            </h1>
+            <ThemeToggle {...themeToggleProps} />
+          </div>
         </div>
-      </div>
-    </NavStyleWrapper>
+      </NavStyleWrapper>
+      <div style={{
+        height: "58px",
+        width: "100vw"
+      }}/>
+    </>
   );
 }
 
