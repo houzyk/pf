@@ -2,8 +2,6 @@ import { createGlobalStyle } from "styled-components";
 import { ThemeInterface } from "./themes";
 
 const GlobalStyles = createGlobalStyle<{theme: ThemeInterface}>`
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
-
   body {
     background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
