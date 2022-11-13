@@ -23,7 +23,6 @@ const Accordion: React.FunctionComponent<AccordionPropsInterface> = ({
 
   const isLightGlobalTheme = useContext(GlobalThemeContext);
 
-  const panelRef = useRef<HTMLDivElement>(null);
   const panelDescriptionTextRef = useRef<HTMLParagraphElement>(null);
   const panelTechTextRef = useRef<HTMLParagraphElement>(null);
   const panelAnchorRef = useRef<HTMLAnchorElement>(null);
@@ -59,7 +58,6 @@ const Accordion: React.FunctionComponent<AccordionPropsInterface> = ({
       </button>
       <div 
         className="accordion-panel"
-        ref={panelRef}
       >
         <p 
           ref={panelDescriptionTextRef}
