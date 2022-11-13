@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ThemeInterface } from "../../themes";
 
 interface SectionHOCPropsInterface {
   children: any;
@@ -23,9 +24,14 @@ const SectionHOC: React.FunctionComponent<SectionHOCPropsInterface> = ({
   );
 }
 
-const SectionHOCStyleWrapper = styled.section`
+const SectionHOCStyleWrapper = styled.section<{ theme: ThemeInterface }>`
   &.section {
-    
+    .section-title {
+      position: sticky;
+      top: 68px;
+      background-color: ${({ theme }) => theme.background};
+      z-index: 1;
+    }
   }
 `
 

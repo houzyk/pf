@@ -83,7 +83,7 @@ const NavStyleWrapper = styled.nav<{ theme:ThemeInterface, progressBarLength: nu
     width: 100vw;
     position: fixed;
     background-color: ${({ theme }) => theme.background};
-    z-index: 1;
+    z-index: 2;
 
     .nav-container {
       height: 100%;
