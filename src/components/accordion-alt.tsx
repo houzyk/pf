@@ -103,12 +103,10 @@ const AccordionAltStyleWrapper = styled.div<{ theme: ThemeInterface, accordionTh
     }
 
     .accordion-alt-content-container {
-      height: calc(100% - 90px);
       display: flex;
 
       .accordion-alt-content-main {
         width: 50%;
-        height: 100%;
         padding-left: 30px;
         padding-right: 30px;
 
@@ -131,7 +129,6 @@ const AccordionAltStyleWrapper = styled.div<{ theme: ThemeInterface, accordionTh
 
       .accordion-alt-content-description {
         width: 50%;
-        height: 100%;
         padding-top: 40px;
         padding-left: 30px;
         padding-right: 30px;
