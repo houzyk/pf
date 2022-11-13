@@ -91,6 +91,7 @@ const Accordion: React.FunctionComponent<AccordionPropsInterface> = ({
 const AccordionStyleWrapper = styled.div<{ isAccordionOpen: boolean, panelTextLegth?: number, theme: ThemeInterface, accordionTheme: string, isLightGlobalTheme: boolean }>`
   &.accordion {
     border: 3px solid ${({ isAccordionOpen, accordionTheme, isLightGlobalTheme, theme }) => isAccordionOpen && isLightGlobalTheme ? accordionTheme : theme.outline};
+    transition: border 0.5s;
     margin-bottom: 10px;
 
     .accordion-button {
