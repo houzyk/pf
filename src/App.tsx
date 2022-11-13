@@ -6,13 +6,15 @@ import { lightTheme, darkTheme } from "./themes";
 import { 
   Nav, 
   Footer,
-  WorkSection
+  WorkSection,
+  ArticleSection
 } from "./components";
 
 import { FooterData, 
   NavData, 
   ThemeToggleData,
-  WorkSectionData
+  WorkSectionData,
+  ArticleSectionData
 } from "./data";
 
 const GlobalThemeContext = React.createContext<boolean>(true);
@@ -51,6 +53,7 @@ const App = () => {
           />
           <main>
             <WorkSection {...WorkSectionData}/>
+            <ArticleSection {...ArticleSectionData}/>
           </main>
           <Footer {...FooterData}/>
         </IsMobileContext.Provider>

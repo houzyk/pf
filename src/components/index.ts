@@ -15,3 +15,7 @@ export type { AccorionAltPropsInterface } from './accordion-alt';
 
 export { default as  WorkSection } from './work-section';
 export type { WorkSectionsPropsInterface } from './work-section';
+
+
+export { default as  ArticleSection } from './article-section';
+export type { ArticleSectionsPropsInterface } from './article-section';
