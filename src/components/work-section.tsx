@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { SectionHOC } from "./hoc";
 import { Accordion, AccordionAlt, AccordionPropsInterface } from ".";
 import { IsMobileContext } from "../App";
@@ -15,14 +15,25 @@ const WorkSection: React.FunctionComponent<WorkSectionsPropsInterface> = ({
 
   const isMobile = useContext(IsMobileContext);
 
+  const RenderAccordion = (accordionsData_: AccordionPropsInterface[]) => {
+    if (isMobile) {
+      return (
+        <React.Fragment>
+          {accordionsData_.map((accordionData, index) => <Accordion {...accordionData} key={index}/>)}
+        </React.Fragment>
+      );
+    }
+    return (
+      <AccordionAlt accordionsData={accordionsData_}/>
+    );
+  }
+
   return (
     <SectionHOC 
       className="Work"
       sectionTitle={sectionTitle || ''}
     >
-      { !!accordionsData && accordionsData.map((accordionData) => (
-        isMobile ? <Accordion {...accordionData}/> : <AccordionAlt {...accordionData}/>
-      ))}
+      { !!accordionsData && RenderAccordion(accordionsData) }
     </SectionHOC>
   );
 }

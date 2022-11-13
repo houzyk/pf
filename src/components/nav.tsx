@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ThemeInterface } from "../themes";
 import { ThemeToggle, ThemeTogglePropsInterface } from ".";
@@ -49,7 +49,7 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
   }
 
   return (
-    <>
+    <React.Fragment>
       <NavStyleWrapper 
         className="nav" 
         progressBarLength={progressBarLength}
@@ -72,7 +72,7 @@ const Nav: React.FunctionComponent<NavPropsInterface> = ({
         height: "68px",
         width: "100vw"
       }}/>
-    </>
+    </React.Fragment>
   );
 }
 
