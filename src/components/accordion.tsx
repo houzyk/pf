@@ -2,11 +2,12 @@ import { useRef, useState, useContext } from "react";
 import styled from "styled-components";
 import { GlobalThemeContext } from "../App"
 import { ThemeInterface } from "../themes";
+import { RenderTechText } from "../utils";
 
 interface AccordionPropsInterface {
   accordionTitle?: string;
   accordionDescriptionParagraph?: string;
-  accordionTechParagraph?: string;
+  accordionTechParagraph?: string[];
   accordionButtonText?: string;
   accordionButtonURL?: string;
   accordionTheme?: string;
@@ -69,7 +70,7 @@ const Accordion: React.FunctionComponent<AccordionPropsInterface> = ({
           ref={panelTechTextRef}
           className="accordion-panel_tech" 
         >
-          {accordionTechParagraph || ''}
+          {RenderTechText(accordionTechParagraph || [])}
         </p>
         { !!accordionButtonURL && (
           <a 
@@ -135,6 +136,11 @@ const AccordionStyleWrapper = styled.div<{ isAccordionOpen: boolean, panelTextLe
       
       .accordion-panel_tech {
         margin-bottom: 20px;
+        opacity: 0.75;
+
+        .tech-paragraph-bullet {
+          fill: ${({ theme }) => theme.text};
+        }
       }
 
       .accordion-panel_visit {
