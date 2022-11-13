@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { GlobalThemeContext } from "../App"
 import { ThemeInterface } from "../themes";
@@ -14,6 +14,43 @@ const AccordionAlt: React.FunctionComponent<AccorionAltPropsInterface> = ({
 
   const isLightGlobalTheme = useContext(GlobalThemeContext);
   const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(0);
+  const [accordionAltLength, setAccordionAltLength] = useState<number>(0);
+
+  const descriptionTextRef = useRef<HTMLParagraphElement>(null);
+  const techTextRef = useRef<HTMLParagraphElement>(null);
+  const anchorRef = useRef<HTMLAnchorElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+
+  useEffect(() => {
+    ChangeAccordionAltLength();
+  }, [currentProjectIndex]);
+
+  const ChangeAccordionAltLength = () => {
+    const computedAccordionAltLength = ComputeAccordionAltLength();
+    setAccordionAltLength(computedAccordionAltLength);
+  }
+
+  const ComputeAccordionAltLength = () => {
+    const titleElHeight = GetElementTotalHeight(titleRef?.current);
+    const techElHeight = GetElementTotalHeight(techTextRef?.current);
+    const descriptionElHeight = GetElementTotalHeight(descriptionTextRef?.current);
+
+    const mainTextBoxLength = (anchorRef?.current?.offsetHeight || 0) + titleElHeight + techElHeight;
+
+    if (descriptionElHeight >= mainTextBoxLength) {
+      return descriptionElHeight;
+    } else {
+      return mainTextBoxLength;
+    }
+  }
+
+  const GetElementTotalHeight = (ref_: any) => {
+    let result = ref_?.offsetHeight || 0;
+    result = result + parseInt(window?.getComputedStyle(ref_ as Element)?.getPropertyValue('margin-top'));
+    result = result + parseInt(window?.getComputedStyle(ref_ as Element)?.getPropertyValue('margin-bottom'));
+    return result;
+  }
 
   const MoveUpToProject = () => {
     setCurrentProjectIndex(currentProjectIndex + 1);
@@ -28,6 +65,9 @@ const AccordionAlt: React.FunctionComponent<AccorionAltPropsInterface> = ({
       className="accordion-alt"
       accordionTheme={accordionsData[currentProjectIndex].accordionTheme || ''}
       isLightGlobalTheme={isLightGlobalTheme}
+      accordionAltLength={
+        accordionAltLength
+      }
     >
       <div className="accordion-alt-buttons-container">
         <button className="accordion-alt-button" disabled={currentProjectIndex <= 0} onClick={MoveDownToProject}>
@@ -43,8 +83,8 @@ const AccordionAlt: React.FunctionComponent<AccorionAltPropsInterface> = ({
       </div>
       <div className="accordion-alt-content-container">
         <div className="accordion-alt-content-main">
-          <h3 className="accordion-alt-content-main_title">{accordionsData && accordionsData[currentProjectIndex]?.accordionTitle || ''}</h3>
-          <p className="accordion-alt-content-main_tech">
+          <h3 className="accordion-alt-content-main_title" ref={titleRef}>{accordionsData && accordionsData[currentProjectIndex]?.accordionTitle || ''}</h3>
+          <p className="accordion-alt-content-main_tech" ref={techTextRef}>
             {accordionsData && accordionsData[currentProjectIndex]?.accordionTechParagraph || ''}
           </p>
           { !!accordionsData[currentProjectIndex]?.accordionButtonURL && (
@@ -52,13 +92,14 @@ const AccordionAlt: React.FunctionComponent<AccorionAltPropsInterface> = ({
               className="accordion-alt-content-main_visit-button" 
               target="_blank"
               href={accordionsData && accordionsData[currentProjectIndex]?.accordionButtonURL || ''}
+              ref={anchorRef}
             >
               {accordionsData && accordionsData[currentProjectIndex]?.accordionButtonText || ''}
             </a>
           )}
         </div>
         <div className="accordion-alt-content-description">
-          <p>
+          <p ref={descriptionTextRef}>
             {accordionsData && accordionsData[currentProjectIndex]?.accordionDescriptionParagraph || ''}
           </p>
         </div>
@@ -67,13 +108,13 @@ const AccordionAlt: React.FunctionComponent<AccorionAltPropsInterface> = ({
   );
 }
 
-const AccordionAltStyleWrapper = styled.div<{ theme: ThemeInterface, accordionTheme: string,  isLightGlobalTheme: boolean}>`
+const AccordionAltStyleWrapper = styled.div<{ theme: ThemeInterface, accordionTheme: string,  isLightGlobalTheme: boolean, accordionAltLength: number}>`
   &.accordion-alt {
-    height: 400px;
     border: 3px solid ${({ theme }) => theme.outline};
     color: ${({ theme }) => theme.text};
-    overflow: hidden;
     padding: 0;
+    height: ${({ accordionAltLength }) => `${accordionAltLength + 170}px`};
+    transition: height 0.5s;
 
     .accordion-alt-buttons-container {
       height: 80px;
