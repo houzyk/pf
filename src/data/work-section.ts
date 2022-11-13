@@ -6,7 +6,7 @@ const workSectionData: WorkSectionsPropsInterface = {
     {
       accordionTitle: "Pampers",
       accordionDescriptionParagraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus soluta suscipit voluptate nemo iusto pariatur eos, doloribus porro? Necessitatibus recusandae autem dicta laborum laudantium delectus et error praesentium, ab perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus soluta suscipit voluptate nemo iusto pariatur eos, doloribus porro? Necessitatibus recusandae autem dicta laborum laudantium delectus et error praesentium, ab perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus soluta suscipit voluptate nemo iusto pariatur eos, doloribus porro? Necessitatibus recusandae autem dicta laborum laudantium delectus et error praesentium, ab perspiciatis?",
-      accordionTechParagraph: "React Next Typescript GQL Azure JavaScript",
+      accordionTechParagraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus soluta suscipit voluptate nemo iusto pariatur eos, doloribus porro? Necessitatibus recusandae autem dicta laborum laudantium delectus et error praesentium, ab perspiciatis?",
       accordionTheme: "#00A3A3",
       accordionButtonText: "GO TO PROJECT",
       accordionButtonURL: "https://www.pampers.com/en-us"
