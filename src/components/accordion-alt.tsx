@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { GlobalThemeContext } from "../App"
 import { ThemeInterface } from "../themes";
 import { AccordionPropsInterface } from ".";
+import { RenderTechText } from "../utils";
 
 interface AccorionAltPropsInterface {
   accordionsData: AccordionPropsInterface[];
@@ -120,7 +121,7 @@ const AccordionAlt: React.FunctionComponent<AccorionAltPropsInterface> = ({
             className="accordion-alt-content-main_tech" 
             ref={techTextRef}
           >
-            {accordionsData && accordionsData[currentProjectIndex]?.accordionTechParagraph || ''}
+            {accordionsData && RenderTechText(accordionsData[currentProjectIndex]?.accordionTechParagraph || [])}
           </p>
           { !!accordionsData[currentProjectIndex]?.accordionButtonURL && (
             <a 
@@ -192,6 +193,11 @@ const AccordionAltStyleWrapper = styled.div<{ theme: ThemeInterface, accordionTh
 
         .accordion-alt-content-main_tech {
           margin-bottom: 30px;
+          opacity: 0.75;
+          
+          .tech-paragraph-bullet {
+            fill: ${({ theme }) => theme.text};
+          }
         }
 
         .accordion-alt-content-main_visit-button {
