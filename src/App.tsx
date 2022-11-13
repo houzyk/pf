@@ -24,7 +24,7 @@ const App = () => {
   const [isMobile, setIsMobile] = useState<boolean>(true);
   
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 375);
+    setIsMobile(window.innerWidth <= 425);
 
     window.addEventListener("resize", OnWindowResize);
 
@@ -34,7 +34,7 @@ const App = () => {
   }, []);
 
   const OnWindowResize = () => {
-    setIsMobile(window.innerWidth <= 375);
+    setIsMobile(window.innerWidth <= 425);
   }
 
   return (
