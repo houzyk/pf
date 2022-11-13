@@ -168,6 +168,16 @@ const AccordionAltStyleWrapper = styled.div<{ theme: ThemeInterface, accordionTh
         height: 60px;
         width: 60px;
         cursor: pointer;
+        transition: border background-color 0.5s;
+
+        &:hover {
+          border: 3px solid ${({ theme }) => theme.background};
+          background-color: ${({ theme }) => theme.outline};
+
+          .accordion-alt-button-arrow {
+            fill: ${({ theme }) => theme.background};
+          }
+        }
 
         &:disabled {
           opacity: 0.5;
@@ -175,6 +185,7 @@ const AccordionAltStyleWrapper = styled.div<{ theme: ThemeInterface, accordionTh
 
         .accordion-alt-button-arrow {
           fill: ${({ theme }) => theme.outline};
+          transition: fill 0.5s;
         }
       }
     }
