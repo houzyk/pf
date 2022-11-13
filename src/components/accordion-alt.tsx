@@ -21,6 +21,13 @@ const AccordionAlt: React.FunctionComponent<AccorionAltPropsInterface> = ({
   const anchorRef = useRef<HTMLAnchorElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
+  useEffect(() => {
+    window.addEventListener("resize", ChangeAccordionAltLength);
+
+    return (() => {
+      window.removeEventListener("resize", ChangeAccordionAltLength);
+    });
+  }, [])
 
   useEffect(() => {
     ChangeAccordionAltLength();
