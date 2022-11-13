@@ -10,5 +10,7 @@ export type { ThemeTogglePropsInterface } from './themetoggle';
 export { default as Accordion } from './accordion';
 export type { AccordionPropsInterface } from './accordion';
 
+export { default as AccordionAlt } from './accordion-alt';
+
 export { default as  WorkSection } from './work-section';
 export type { WorkSectionsPropsInterface } from './work-section';
