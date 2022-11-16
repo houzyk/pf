@@ -146,7 +146,7 @@ const AccordionAlt: React.FunctionComponent<AccorionAltPropsInterface> = ({
 
 const AccordionAltStyleWrapper = styled.div<{ theme: ThemeInterface, accordionTheme: string,  isLightGlobalTheme: boolean, accordionAltLength: number}>`
   &.accordion-alt {
-    border: 3px solid ${({ theme }) => theme.outline};
+    border: 6px solid ${({ theme }) => theme.outline};
     color: ${({ theme }) => theme.text};
     padding: 0;
     height: ${({ accordionAltLength }) => `${accordionAltLength + 120}px`};
