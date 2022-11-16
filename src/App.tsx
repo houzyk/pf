@@ -7,7 +7,8 @@ import {
   Nav, 
   Footer,
   WorkSection,
-  ArticleSection
+  ArticleSection,
+  HeroSection
 } from "./components";
 
 import { FooterData, 
@@ -52,6 +53,7 @@ const App = () => {
             }}
           />
           <main>
+            <HeroSection />
             <WorkSection {...WorkSectionData}/>
             <ArticleSection {...ArticleSectionData}/>
           </main>

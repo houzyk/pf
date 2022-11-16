@@ -19,3 +19,5 @@ export type { WorkSectionsPropsInterface } from './work-section';
 
 export { default as  ArticleSection } from './article-section';
 export type { ArticleSectionsPropsInterface } from './article-section';
+
+export { default as  HeroSection } from './hero-section';
