@@ -22,9 +22,8 @@ const HeroSectionStyleWrapper = styled.div<{ theme: any }>`
   &.hero-section-container {
 
     .hero-section-container-text {
-      font-size: 15vw;
+      font-size: 13vw;
       margin: 0;
-      text-align: justify;
 
       .hero-section-container-text-job {
         font-style: italic;
@@ -47,6 +46,7 @@ const HeroSectionStyleWrapper = styled.div<{ theme: any }>`
       }
       @media (min-width: 1024px) {
         font-size: 7vw;
+        text-align: justify;
       }
       @media (min-width: 1440px) {
         font-size: 5rem;
